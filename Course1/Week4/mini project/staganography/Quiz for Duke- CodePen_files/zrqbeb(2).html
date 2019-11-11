@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://s.codepen.io/orached/fullembedgrid/zrqbeb?type=embed&animations=run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+
+
+    <title>CodePen - A Pen by  Omar RACHED</title>
+    
+    
+    
+    
+    
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+
+    
+    
+  <style type="text/css"></style></head>
+
+  <body>
+
+    <h1>Part 1 - Create an Image from Scratch</h1>
+<img src="C8AWZ8p.png">
+<h2>Algorithm explanation</h2>
+<p>I tried to draw Bangladesh flag picture from scratch</p>
+<h2>Javascript program</h2>
+<pre> function dist(pixel, x,y) {
+     var dx = pixel.getX() - x;
+     var dy = pixel.getY() - y;
+     return Math.sqrt(dx * dx + dy *dy);
+ }
+ //start with a blank image
+ var output = new SimpleImage(320,250);
+ 
+ //Make something here!
+ for (var pixel of output.values()){
+     if (dist(pixel, 160,125)&lt; 50){
+         pixel.setRed(255);
+     }
+     else {
+         pixel.setGreen(150);
+     }
+    }
+ 
+ print(output);</pre>
+    
+    
+    
+    
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+    
+  
+
+ 
+</body></html>

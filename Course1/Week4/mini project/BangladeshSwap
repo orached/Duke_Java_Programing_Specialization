@@ -1,0 +1,23 @@
+var image = new SimpleImage("Bangladesh.png");
+
+function swapRedGreen(input){
+	var output = new SimpleImage(input.getWidth(), input.getHeight());
+	for(var px of input.values()){
+		var x = input.getX();
+		var y = input.getY();
+		var red = input.getRed();
+		var green = input.getGreen();
+		if(red > 100){
+			var nred = green;
+			output.setRed(nred, x, y);
+		}
+		if(green > 100){
+			var ngreen = red;
+			output.setGreen(ngreen, x, y);
+		}
+	}
+	return output;
+}
+
+var output = swapRedGreen(image);
+ptint(output);

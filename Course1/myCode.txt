@@ -1,0 +1,21 @@
+// write your code here
+var image = new SimpleImage(200,200);
+//print(image);
+
+for(var px of image.values()){
+    if(px.getX()<=100 && px.getY()<=100){
+        px.setRed(255);
+    }
+    else if(px.getY()<=100 && px.getX()>100){
+        px.setGreen(255);
+    }
+    else if(px.getY()>100 && px.getX()>100){
+        px.setBlue(255);
+    }
+    else if(px.getY()>100 && px.getX()<100) {
+        px.setRed(255);
+        px.setBlue(255);
+    }
+    
+}
+print(image);

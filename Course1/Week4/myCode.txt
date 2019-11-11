@@ -1,0 +1,64 @@
+function swapRedGreen(pixel){
+    var green = pixel.getGreen();
+    var red = pixel.getRed();
+    pixel.setRed(green);
+    pixel.setGreen(red);
+}
+
+function moreRed(pixel, value){
+    var red = pixel.getRed();
+    if((red+value)<255){
+    pixel.setRed(red+value);
+    }
+    else {
+        pixel.setRed(255);
+    }
+}
+
+function setBlack(pixel){
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(0);
+    return pixel;
+}
+
+function pixelOnEdge(pixel, image, borderWidth){
+    var xl = image.getWidth();
+    var yl = image.getHeight();
+    var x = pixel.getX();
+    var y = pixel.getY();
+    if(x<=borderWidth || y<=borderWidth || x>=(xl-borderWidth) || y>=(yl-borderWidth)){
+        return true;
+    }
+    else return false;
+}
+
+function pixelOnVerticalEdge(pixel, image, borderWidth){
+    var yl = image.getHeight();
+    var y = pixel.getY();
+    if(y<=borderWidth || y>=(y1-borderWidth)){
+        return true;
+    }
+    else return false;
+}
+
+function pixelOnHorizontalEdge(pixel, image, borderWidth){
+    var xl = image.getwidth();
+    var x = pixel.getX();
+    if(x<=borderWidth || x>=(xl-borderWidth)){
+    return true;
+    }
+    else return false;
+}
+
+var image = new SimpleImage("hilton.jpg");
+print(image);
+for (var p of image.values()){
+    //swapRedGreen(p);
+    //moreRed(p, 80);
+    if(pixelOnEdge(p, image, 5)){
+        setBlack(p);
+    }
+    
+}
+print(image);

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=n
+comment0.target=EfficientMarkovModel(int)
+comment1.params=seed
+comment1.target=void\ setRandom(int)
+comment2.params=s
+comment2.target=void\ setTraining(java.lang.String)
+comment3.params=numChars
+comment3.target=java.lang.String\ getRandomText(int)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=
+comment5.target=void\ buildMap()
+comment5.text=\r\n\ \ \ \ public\ void\ buildMap(){\r\n\ \ \ \ \ \ \ \ myMap\ \=\ new\ HashMap<String,\ ArrayList<String>>();\r\n\ \ \ \ \ \ \ \ for(int\ i\=0;\ i<\=myText.length()-order;\ i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ String\ keyWord\ \=\ myText.substring(i,\ i+order);\r\n\ \ \ \ \ \ \ \ \ \ \ \ ArrayList<String>\ follows\ \=\ new\ ArrayList<String>();\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(\!\ myMap.containsKey(keyWord)){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(\!\ myText.substring(i+order).isEmpty()){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ follows.add(myText.substring(i+order,\ i+order+1));\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }//\ else\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ \ \ \ follows.add("");\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myMap.put(keyWord,\ follows);\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\ else{\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(\!\ myText.substring(i+order).isEmpty()){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myMap.get(keyWord).add(myText.substring(i+order,\ i+order+1));\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ //return\ myMap;\r\n\ \ \ \ }\r\n
+comment6.params=key
+comment6.target=java.util.ArrayList\ getFollows(java.lang.String)
+comment7.params=
+comment7.target=void\ printHashMapInfo()
+numComments=8

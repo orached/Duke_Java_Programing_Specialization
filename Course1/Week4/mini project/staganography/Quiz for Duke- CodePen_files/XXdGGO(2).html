@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://s.codepen.io/orached/fullembedgrid/XXdGGO?type=embed&animations=run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+
+
+    <title>CodePen - A Pen by  Omar RACHED</title>
+    
+    
+    
+    
+    
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+
+    
+    
+  <style type="text/css"></style></head>
+
+  <body>
+
+    <h1>Part 2 - Modify an Image</h1>
+<img src="C8AWZ8p.png"><img src="gJ3RSNQ.png">
+<h2>Algorithm explanation</h2>
+<p>This little program swap the red and green colors of the Bangladesh flag</p>
+<h2>Javascript program</h2>
+<pre>var image = new SimpleImage("Bangladesh.png");
+
+function swapRedGreen(input){
+	var output = new SimpleImage(input.getWidth(), input.getHeight());
+	for(var px of input.values()){
+		var x = input.getX();
+		var y = input.getY();
+		var red = input.getRed();
+		var green = input.getGreen();
+		if(red &gt; 100){
+			var nred = green;
+			output.setRed(nred, x, y);
+		}
+		if(green &gt; 100){
+			var ngreen = red;
+			output.setGreen(ngreen, x, y);
+		}
+	}
+	return output;
+}
+
+var output = swapRedGreen(image);
+ptint(output);</pre>
+    
+    
+    
+    
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+    
+  
+
+ 
+</body></html>

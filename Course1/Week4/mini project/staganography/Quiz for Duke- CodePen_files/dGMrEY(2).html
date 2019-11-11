@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://s.codepen.io/orached/fullembedgrid/dGMrEY?type=embed&animations=run -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+
+
+    <title>CodePen - A Pen by  Omar RACHED</title>
+    
+    
+    
+    
+    
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+
+    
+    
+  <style type="text/css"></style></head>
+
+  <body>
+
+    <h1>Part 3 - Hide an Image in Another Image -- Steganography</h1>
+<img src="RHKKI8N.png"><img src="U7RSbf5.png"><br>
+<img src="0hDolRA.png"><img src="25ml9Sd.png">
+<h2>Modification for 2 bits</h2>
+<img src="8V7gQFY.png">
+<p>To keep 6 bits of the first picture and take only 2 bits from the icture to hide, we have to divide all RGB values by 8 to have the first 6 bits and to have the 2 bits left we substract this division from the original value as we see in the javascript program below</p>
+<pre>function crop(image, width, height){
+    var nImg = new SimpleImage(width, height);
+    for(var px of image.values()){
+        var x = px.getX();
+        var y = px.getY();
+        if(x<width &&="" y<height){="" nimg.setpixel(x,="" y,="" px);="" }="" return="" nimg="" function="" pixchange(pixval){="" var="" x="Math.floor(pixval/16)" *="" 16;="" x;="" for="" 8="" base="" pixchangebe(pixval){="" 8;="" chop2hide(image){="" for(var="" px="" of="" image.values()){="" px.setred(pixchangebe(px.getred()));="" px.setgreen(pixchangebe(px.getgreen()));="" px.setblue(pixchangebe(px.getblue()));="" image;="" shift(im){="" nim="new" simpleimage(im.getwidth(),="" im.getheight());="" im.values()){="" y="px.getY();" npx="nim.getPixel(x,y);" npx.setred(px.getred()="" -="" (math.floor(px.getred()="" 8)*8));="" npx.setgreen(px.getgreen()="" (math.floor(px.getgreen()="" npx.setblue(px.getblue()="" (math.floor(px.getblue()="" 8)="" 8));="" nim;="" newpv(p,="" q){="" if((p+q)="">255){
+        print("Error: The sum is greater than 255 !")
+    }
+    else return p+q;
+}
+
+function combine(image1, image2){
+    var newImg = new SimpleImage(image1.getWidth(), image1.getHeight());
+    for(var px of image1.values()){
+        var x = px.getX();
+        var y = px.getY();
+        var px2 = image2.getPixel(x, y)
+        var imR = newpv(px.getRed(), px2.getRed());
+        var imG = newpv(px.getGreen(), px2.getGreen());
+        var imB = newpv(px.getBlue(), px2.getBlue());
+        var npx = newImg.getPixel(x, y);
+        npx.setRed(imR);
+        npx.setGreen(imG);
+        npx.setBlue(imB);
+        newImg.setPixel(x, y, npx);
+    }
+    return newImg;
+}
+var start = new SimpleImage("usain.jpg");
+var hide = new SimpleImage("duke_blue_devil.png");
+
+var pix1 = hide.getPixel(50, 50);
+print(pix1.getRed());
+print(start);
+print(hide);
+
+var sw = start.getWidth();
+var sh = start.getHeight();
+var hw = hide.getWidth();
+var hh = hide.getHeight();
+
+if(sw&gt;hw &amp;&amp; sh&gt;hh){
+	var imgCropped = crop(start, hw, hh);
+	start = chop2hide(imgCropped);
+}
+else if(hw&gt;sw &amp;&amp; hh&gt;sh){
+	var imgCropped = crop(hide, sw, sh);
+	hide = shift(imgCropped);
+}
+else {
+start = chop2hide(start);
+hide = shift(hide);
+}
+
+var pix = hide.getPixel(50, 50);
+print(pix.getRed());
+print(start);
+print(hide);
+
+print(combine(start, hide));
+
+function extract(image){
+	var output = new SimpleImage(image.getWidth(), image.getHeight());
+	for(var px of image.values()){
+		var x = px.getX();
+		var y = px.getY();
+		var opx = output.getPixel(x, y);
+		var inRed = px.getRed();
+		opx.setRed(inRed - (Math.floor(inRed/8)*8));
+		var inGreen = px.getGreen();
+		opx.setGreen(inGreen - (Math.floor(inGreen/8)*8));
+		var inBlue = px.getBlue();
+		opx.setBlue(inBlue-(Math.floor(inBlue/8)*8));
+		output.setPixel(x, y, opx);
+	}
+	return output;
+}
+var imagee = new SimpleImage("QuizDrew.png");
+print(imagee);
+var hidden = extract(imagee);
+print(hidden);
+</width></pre>
+<br><p>The hidden message is :
+<img src="0hDolRA.png">
+     </p>
+    
+    
+    
+    
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+    
+  
+
+ 
+</body></html>

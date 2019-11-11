@@ -1,0 +1,84 @@
+function crop(image, width, height){
+    var nImg = new SimpleImage(width, height);
+    for(var px of image.values()){
+        var x = px.getX();
+        var y = px.getY();
+        if(x<width && y<height){
+            nImg.setPixel(x, y, px);
+        }
+    }
+    return nImg
+}
+
+function pixchange(pixval){
+    var x = Math.floor(pixval/16) * 16;
+    return x;
+}
+
+function chop2hide(image){
+    for(var px of image.values()){
+        px.setRed(pixchange(px.getRed()));
+        px.setGreen(pixchange(px.getGreen()));
+        px.setBlue(pixchange(px.getBlue()));
+    }
+    return image;
+}
+
+function shift(im){
+  var nim = new SimpleImage(im.getWidth(), 
+                            im.getHeight());
+  for(var px of im.values()){
+    var x = px.getX();
+    var y = px.getY();
+    var npx = nim.getPixel(x,y);
+    npx.setRed(Math.floor(px.getRed()/16));
+    npx.setGreen(Math.floor(px.getGreen()/16));
+    npx.setBlue(Math.floor(px.getBlue()/16));
+  }
+  return nim;
+}
+
+function newpv(p, q){
+    if((p+q)>255){
+        print("Error: The sum is greater than 255 !")
+    }
+    else return p+q;
+}
+
+function combine(image1, image2){
+    var newImg = new SimpleImage(image1.getWidth(), image1.getHeight());
+    for(var px of image1.values()){
+        var x = px.getX();
+        var y = px.getY();
+        var px2 = image2.getPixel(x, y)
+        var imR = px.getRed()+px2.getRed();
+        var imG = px.getGreen()+px2.getGreen();
+        var imB = px.getBlue()+px2.getBlue();
+        var npx = newImg.getPixel(x, y);
+        npx.setRed(imR);
+        npx.setGreen(imG);
+        npx.setBlue(imB);
+        newImg.setPixel(x, y, npx);
+    }
+    return newImg;
+}
+var start = new SimpleImage("usain.jpg");
+var hide = new SimpleImage("skyline.jpg");
+//var nImg = crop(start, 250, 280);
+//var widthOfCropped = nImg.getWidth();
+//var heightOfCropped = nImg.getHeight();
+//print(widthOfCropped, heightOfCropped);
+//print(nImg);
+
+print(hide);
+print(start);
+
+//start = chop2hide(nImg);
+start = chop2hide(start);
+hide = shift(hide);
+
+print(start);
+print(hide);
+
+print(combine(start, hide));
+

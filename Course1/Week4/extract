@@ -1,0 +1,52 @@
+function extract(image){
+	var output = new SimpleImage(image.getWidth(), image.getHeight());
+	for(var px of image.values()){
+		var x = px.getX();
+		var y = px.getY();
+		var opx = output.getPixel(x, y);
+		var inRed = px.getRed();
+		opx.setRed(Math.floor(inRed%16)*16);
+		var inGreen = px.getGreen();
+		opx.setGreen(Math.floor(inGreen%16)*16);
+		var inBlue = px.getBlue();
+		opx.setBlue(Math.floor(inBlue%16)*16);
+		output.setPixel(x, y, opx);
+	}
+	return output;
+}
+
+function duplicate(image){
+	var w = image.getWidth();
+	var h = image.getHeight();
+	var output = new SimpleImage(w*2, h*2);
+	for(var px of output.values()){
+		var x = px.getX();
+		var y = px.getY();
+		if(x<w && y <h){
+			var originalPx = image.getPixel(x, y);
+			px.setRed(originalPx.getRed());
+			px.setGreen(originalPx.getGreen());
+			px.setBlue(originalPx.getBlue());
+		}
+		if(x>=w && y<h){
+			var originalPx = image.getPixel(x-w, y);
+			px.setRed(originalPx.getRed());
+			px.setGreen(originalPx.getGreen());
+			px.setBlue(originalPx.getBlue());
+		}
+		if(x<w && y>=h){
+			var originalPx = image.getPixel(x, y-h);
+			px.setRed(originalPx.getRed());
+			px.setGreen(originalPx.getGreen());
+			px.setBlue(originalPx.getBlue());
+		}
+		if(x>=w && y>=h){
+			var originalPx = image.getPixel(x-w, y-h);
+			px.setRed(originalPx.getRed());
+			px.setGreen(originalPx.getGreen());
+			px.setBlue(originalPx.getBlue());
+		}
+		
+	}
+	return output;
+}

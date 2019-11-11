@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=resource
+comment0.target=int[]\ countWordLength(edu.duke.FileResource)
+comment1.params=
+comment1.target=void\ TestWordlength()
+comment2.params=values
+comment2.target=int\ maxIndex(int[])
+comment3.params=phrase
+comment3.target=int[]\ countLetters(java.lang.String)
+comment4.params=
+comment4.target=void\ SimpleTests()
+comment5.params=input
+comment5.target=java.lang.String\ breakCaesarCipher(java.lang.String)
+numComments=6

@@ -1,0 +1,19 @@
+var image = new SimpleImage("hilton.jpg");
+print(image);
+
+//var imageLength = image.getLength()/3;
+var imageLength = 140/3;
+
+for (var p of image.values()) {
+     var x = p.getX();
+     if(x<=imageLength){
+        p.setRed(255);
+     }
+     if(x>imageLength && x<=(imageLength*2)){
+        p.setGreen(255);
+     }
+     if(x>(imageLength*2) && x<=(imageLength*3)){
+        p.setBlue(255);
+     }
+}
+print(image);

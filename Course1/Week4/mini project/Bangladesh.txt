@@ -1,0 +1,19 @@
+ function dist(pixel, x,y) {
+     var dx = pixel.getX() - x;
+     var dy = pixel.getY() - y;
+     return Math.sqrt(dx * dx + dy *dy);
+ }
+ //start with a blank image
+ var output = new SimpleImage(320,250);
+ 
+ //Make something here!
+ for (var pixel of output.values()){
+     if (dist(pixel, 160,125)< 50){
+         pixel.setRed(255);
+     }
+     else {
+         pixel.setGreen(150);
+     }
+    }
+ 
+ print(output);

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=person
+comment0.target=void\ update(java.lang.String)
+comment1.params=
+comment1.target=void\ findAllCharacters()
+comment2.params=
+comment2.target=void\ tester()
+comment3.params=num1\ num2
+comment3.target=void\ charactersWithNumParts(int,\ int)
+numComments=4
